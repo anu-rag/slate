@@ -1,17 +1,14 @@
 ---
-title: API Reference
+title: Taskplus API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='#'>Taskplus API document</a>
+  - <a href='#'>copywrite 2018 Node Technologies</a>
 
 includes:
+  - project
   - errors
 
 search: true
@@ -19,221 +16,150 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+This is the very first documentation for Taskplus APIs. The request/response format is in json unless specifically mentioned otherwise. Still in development phase, anticipate for changes every now then.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# Making Requests
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Since this application is a multi-tenant system, the tenant name is captured in the URL. So, the base URI would be: 
+`http://[account_name].shyamasoft.com/api/[api_version]/`. Items inside `[]` are variable. The `[account_name]` is the tenant name and the `[api_version]` is the API version, check [supported versions](#supported-api-versions) for the API versions that are currently supported.
 
-# Authentication
+# Supported API Versions
 
-> To authorize, use this code:
+Currently these are supported versions of API:
 
-```ruby
-require 'kittn'
+* 1
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+# Auth
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
+## Signup
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+username | None | A unique identifier for every user.
+password | None | Required to authenticate a user.
+re_password | None | Required to make sure the user is sure of what the user has typed in password.
+email  | Null | The email address of the user.
+mobile_number | Null | The mobile number of the user.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+There cannot duplicate usernames. `username`, `password`, `re_password` are case-sensitive, and are mandatory fields.
+
+As part of response, user details will be provided and a `token` object will be provided. Use the `"token": "AveEEeeeEeeeEEeEEeEEERYLoOOoOOoOONnnNNnNnNnGGGgAcEssToKEn"` for API calls.
+
+
+<aside class="notice">
+Note: this API may be deprecated in favour of user creation from the company itself.
 </aside>
 
-## Get a Specific Kitten
 
-```ruby
-require 'kittn'
+<aside class="warning">
+<em>token</em> is mandatory for every API call (except <a href="#auth">Auth</a>). If this is not provided, an error message will be sent. Refere error section. 
+</aside>
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+> Request
+>
+> POST auth/signup
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "username": "username",
+  "password": "password",
+  "re_password": "retype password",
+  "email": "your@email.address",
+  "mobile_number": "098XXXXXXX"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "status_code": 200,
+  "data": {
+      "user": {
+          "designation": null,
+          "username": "username",
+          "full_name": "",
+          "id": 1,
+          "email": "your@email.address",
+          "phone": "098XXXXXXX"
+      },
+      "token": {
+          "expiry": 1529840221,
+          "token": "AveEEeeeEeeeEEeEEeEEERYLoOOoOOoOONnnNNnNnNnGGGgAcEssToKEn"
+      }
+  },
+  "message": "Login Successful",
+  "status_text": "Success. OK."
 }
 ```
 
-This endpoint deletes a specific kitten.
+## Signin
+Parameter | Default | Description
+--------- | ------- | -----------
+username | None | A unique identifier for every user.
+password | None | Required to authenticate a user.
 
-### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+> Request
+>
+> POST auth/signin
 
-### URL Parameters
+```json
+{
+  "username": "usernamee",
+  "password": "password"
+}
+```
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+> Response
 
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Login Successful",
+    "data": {
+        "token": {
+            "token": "AveEEeeeEeeeEEeEEeEEERYLoOOoOOoOONnnNNnNnNnGGGgAcEssToKEn",
+            "expiry": 1529506281
+        },
+        "user": {
+            "id": 15,
+            "username": "username",
+            "full_name": "full_name_of_user",
+            "email": "your@email.address",
+            "phone": "098XXXXXXX",
+            "designation": null
+        }
+    }
+}
+```
+
+## Signout
+Parameter | Default | Description
+--------- | ------- | -----------
+username | None | A unique identifier for every user.
+password | None | Required to authenticate a user.
+
+> Request
+>
+> POST auth/signout
+
+```json
+{
+  "username": "username",
+  "password": "password"
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "data": {},
+    "message": "Logout Successful"
+}
+```
