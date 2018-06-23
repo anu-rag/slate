@@ -1,11 +1,11 @@
 ---
 title: Taskplus API Reference
 
-language_tabs: # must be one of https://git.io/vQNgJ
+<!-- language_tabs: # must be one of https://git.io/vQNgJ -->
 
 toc_footers:
-  - <a href='#'>Taskplus API document</a>
-  - <a href='#'>copywrite 2018 Node Technologies</a>
+  - <a href='https://travis-ci.com'>Taskplus API document</a>
+  - <p>copywrite 2018 Node Technologies</p>
 
 includes:
   - project
