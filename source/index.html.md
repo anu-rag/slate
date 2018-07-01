@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - project
+  - task
   - errors
 
 search: true
@@ -41,7 +42,7 @@ re_password | None | Required to make sure the user is sure of what the user has
 email  | Null | The email address of the user.
 mobile_number | Null | The mobile number of the user.
 
-There cannot duplicate usernames. `username`, `password`, `re_password` are case-sensitive, and are mandatory fields.
+There cannot be duplicate usernames. `username`, `password`, `re_password` are case-sensitive, and are mandatory fields.
 
 As part of response, user details will be provided and a `token` object will be provided. Use the `"token": "AveEEeeeEeeeEEeEEeEEERYLoOOoOOoOONnnNNnNnNnGGGgAcEssToKEn"` for API calls.
 
