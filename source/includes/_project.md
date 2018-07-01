@@ -4,7 +4,7 @@
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 name | None | The name of the project to be kept. Maximum character length 250.
 description | Null | The description of the project. Maximum character length 500.
 start_date  | Null | The start date of the project. The start date cannot exceed a year from today's date.
@@ -51,9 +51,9 @@ Note: The members format maybe changed in future.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 
-The `project_id` is an unique integer identifier for a project. Pass this value to get the corresponding project details
+The `project_id` is an unique integer identifier for a project. Pass this value to get the corresponding project details.
 `user_id` is part of query params.
 Only open projects can be fetched by this API.
 
@@ -103,7 +103,7 @@ Only open projects can be fetched by this API.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 name | Null | A new name for the project.
 description | Null | A new description for the project.
 start_date | Null | Changed start_date, not more than a year from today's date.
@@ -111,6 +111,7 @@ end_date | Null | Changed end_date, not more than a decade from today's date.
 closed | false | To mark a project as closed.
 
 The `project_id` is an unique integer identifier for a project.
+`user_id` is part of query params.
 
 Only send the parameter which needs to be updated. For example, to update the project name only send `name` param and its corresponding new value.
 
@@ -139,7 +140,7 @@ Only send the parameter which needs to be updated. For example, to update the pr
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 
 The `project_id` is an unique integer identifier for a project. 
 `user_id` is part of query params.
@@ -166,7 +167,7 @@ The `project_id` is an unique integer identifier for a project.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 members | None | Array of objects conataining attributes `id`, and `lead`.
 
 <aside class="notice">
@@ -198,7 +199,7 @@ Note: Duplicate members are not supported for one project. A member can be added
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 members | None | Array of integers(user_ids).
 
 Only if the user_id is part of the project will the user be removed, otherwise not.
@@ -228,7 +229,7 @@ Only if the user_id is part of the project will the user be removed, otherwise n
 
 Parameter | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
+user_id | None | Id of the user who is sending the request.
 
 Get all projects related to a user (either created by or assigned to).
 
