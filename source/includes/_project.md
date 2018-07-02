@@ -12,7 +12,7 @@ end_date | Null | The end date of the project. The end date cannot exceed a deca
 members | Null | Array of objects conataining attributes `id`, and `lead`. Ex: [{'id': 19, 'lead': true}, {'id': 20, 'lead': false}]
 
 There will only be `Project Lead`s added during creation of project. No other members can be added with this API.
-Other members of the project may be added while creating workgroups(refer [work groups](#supported-api-versions))
+Other members of the project may be added while creating workgroups(refer [work groups](#group))
 
 
 <aside class="notice">
@@ -60,7 +60,7 @@ Only open projects can be fetched by this API.
 
 > Request
 >
-> GET project/[project_id]
+> GET project/[project_id]/?user_id=15
 
 ```json
 
@@ -111,13 +111,12 @@ end_date | Null | Changed end_date, not more than a decade from today's date.
 closed | false | To mark a project as closed.
 
 The `project_id` is an unique integer identifier for a project.
-`user_id` is part of query params.
 
 Only send the parameter which needs to be updated. For example, to update the project name only send `name` param and its corresponding new value.
 
 > Request
 >
-> PUT project/[project_id]
+> PUT project/[project_id]/?user_id=15
 
 ```json
 {
@@ -143,11 +142,10 @@ Parameter | Default | Description
 user_id | None | Id of the user who is sending the request.
 
 The `project_id` is an unique integer identifier for a project. 
-`user_id` is part of query params.
 
 > Request
 >
-> DELETE project/[project_id]
+> DELETE project/[project_id]/?user_id=15
 
 ```json
 
@@ -235,7 +233,7 @@ Get all projects related to a user (either created by or assigned to).
 
 > Request
 >
-> GET project/all
+> GET project/all/?user_id=15
 
 ```json
 

@@ -8,8 +8,11 @@ toc_footers:
   - <p>copywrite 2018 Node Technologies</p>
 
 includes:
+  - role
+  - users
   - project
   - task
+  - group
   - errors
 
 search: true
@@ -100,6 +103,12 @@ Parameter | Default | Description
 --------- | ------- | -----------
 username | None | A unique identifier for every user.
 password | None | Required to authenticate a user.
+
+This API checks if the token has expired or not. If expired, new token will be generated and sent with the response.
+
+<aside class="notice">
+This API can be used to refresh tokens once they expire.
+</aside>
 
 
 > Request

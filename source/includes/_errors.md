@@ -9,14 +9,9 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 
 Error Code | Meaning
 ---------- | -------
+200 | Success. OK. -- Request has been processed successfully.
+201 | Created -- Request has been fulfilled and resulted in a new resource being created.
 400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
+401 | Unauthorized -- Your API token is either invalid, expired, or inactive. For inactive users also.
+404 | Not Found -- The specified resource could not be found.
 500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.

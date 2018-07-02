@@ -158,7 +158,7 @@ The `task_id` is an unique integer identifier for a project.
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Task deleted with id: 4"
+    "message": "Task deleted with id: [task_id]"
 }
 ```
 
