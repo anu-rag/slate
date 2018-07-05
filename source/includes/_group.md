@@ -81,7 +81,7 @@ name | Null | A new name for the group.
 description | Null | A new description for the group.
 is_active | false | To mark a group as inactive.
 
-Only send the parameter which needs to be updated. For example, to update the project name only send `name` param and its corresponding new value.
+Only send the parameter which needs to be updated. For example, to update the group name only send `name` param and its corresponding new value.
 
 The `group_id` is an unique integer identifier for a group. 
 
