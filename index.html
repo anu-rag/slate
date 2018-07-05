@@ -271,6 +271,18 @@
             <a href="#users" class="toc-h1 toc-link" data-title="users">Users</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#create-user" class="toc-h2 toc-link" data-title="create-user">Create User</a>
+                  </li>
+                  <li>
+                    <a href="#get-user" class="toc-h2 toc-link" data-title="get-user">Get User</a>
+                  </li>
+                  <li>
+                    <a href="#update-user" class="toc-h2 toc-link" data-title="update-user">Update User</a>
+                  </li>
+                  <li>
+                    <a href="#delete-user" class="toc-h2 toc-link" data-title="delete-user">Delete User</a>
+                  </li>
+                  <li>
                     <a href="#fetch-all-users" class="toc-h2 toc-link" data-title="fetch-all-users">Fetch All Users</a>
                   </li>
                   <li>
@@ -890,7 +902,424 @@ If <code>role</code> is provided then permissions for this <code>role</code> wil
     </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Actions saved for role!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='users'>Users</h1><h2 id='fetch-all-users'>Fetch All Users</h2>
+</span></code></pre><h1 id='users'>Users</h1><h2 id='create-user'>Create User</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>None</td>
+<td>Id of the user who is sending the request.</td>
+</tr>
+<tr>
+<td>username</td>
+<td>None</td>
+<td>Username for the user. Maximum character length 128.</td>
+</tr>
+<tr>
+<td>password</td>
+<td>None</td>
+<td>Password for the user</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>None</td>
+<td>First name of the user. Maximum character length 30.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>None</td>
+<td>Surname of the user. Maximum character length 30.</td>
+</tr>
+<tr>
+<td>personal_email</td>
+<td>None</td>
+<td>Email of the user. Maximum character length 254.</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>emergency_contact</td>
+<td>NULL</td>
+<td>Contact number of the person in case of emergency.</td>
+</tr>
+<tr>
+<td>permanent_address</td>
+<td>NULL</td>
+<td>Address field. Maximum character length 500.</td>
+</tr>
+<tr>
+<td>current_address</td>
+<td>NULL</td>
+<td>Address field. Maximum character length 500.</td>
+</tr>
+<tr>
+<td>interests</td>
+<td>NULL</td>
+<td>User intersts. Address field. Maximum character length 200.</td>
+</tr>
+<tr>
+<td>work_email</td>
+<td>NULL</td>
+<td>Email of the user. Maximum character length 254.</td>
+</tr>
+<tr>
+<td>contact_number</td>
+<td>NULL</td>
+<td>Company provided mobile number, if so.</td>
+</tr>
+<tr>
+<td>employee_id</td>
+<td>NULL</td>
+<td>Unique identifier for the employee in the company.</td>
+</tr>
+<tr>
+<td>designation</td>
+<td>NULL</td>
+<td>Designation of the user.</td>
+</tr>
+<tr>
+<td>department</td>
+<td>NULL</td>
+<td>Department of the user.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>NULL</td>
+<td>Residing city of the user.</td>
+</tr>
+<tr>
+<td>blood_group</td>
+<td>NULL</td>
+<td>Blood group of teh user.</td>
+</tr>
+<tr>
+<td>date_of_joining</td>
+<td>NULL</td>
+<td>Date field. No time component.</td>
+</tr>
+<tr>
+<td>linkedin_profile</td>
+<td>NULL</td>
+<td>URL field. LinkedIn URL.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Note: <code>interests</code> is a comma-separated value.
+</aside>
+
+<blockquote>
+<p>Request</p>
+
+<p>POST user/create</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"personal_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your@email.address"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89XXXXXXX2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67XXXXXX61"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permanent_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"current_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"music, art"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work@email.address"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9XXXXXX31"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_id"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"designation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department Head"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mechanical"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangalore"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"blood_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O+ve"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_of_joining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://url/to/linkedin/profile/"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User Created"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logged_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"personal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89XXXXXXX2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67XXXXXX61"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"permanent_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"current_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"music, art"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"business"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9XXXXXX31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangalore"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_id"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"designation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department Head"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mechanical"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blood_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O+ve"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date_of_joining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://url/to/linkedin/profile/"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AveEEeeeEeeeEEeEEeEEERYLoOOoOOoOONnnNNnNnNnGGGgAcEssToKEn"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expires_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1531397477</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-user'>Get User</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>None</td>
+<td>Id of the user who is sending the request.</td>
+</tr>
+<tr>
+<td>emp_user_id</td>
+<td>None</td>
+<td>Id of the user whose details need to be fetched.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request</p>
+
+<p>GET user/[emp_user_id]/?user_id=15</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User details fetched"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logged_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"personal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89XXXXXXX2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67XXXXXX61"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"permanent_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"current_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"music, art"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"business"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9XXXXXX31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangalore"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_id"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"designation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department Head"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mechanical"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blood_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O+ve"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date_of_joining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://url/to/linkedin/profile/"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='update-user'>Update User</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>first_name</td>
+<td>None</td>
+<td>First name of the user. Maximum character length 30.</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>None</td>
+<td>Surname of the user. Maximum character length 30.</td>
+</tr>
+<tr>
+<td>personal_email</td>
+<td>None</td>
+<td>Email of the user. Maximum character length 254.</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr>
+<td>emergency_contact</td>
+<td>NULL</td>
+<td>Contact number of the person in case of emergency.</td>
+</tr>
+<tr>
+<td>permanent_address</td>
+<td>NULL</td>
+<td>Address field. Maximum character length 500.</td>
+</tr>
+<tr>
+<td>current_address</td>
+<td>NULL</td>
+<td>Address field. Maximum character length 500.</td>
+</tr>
+<tr>
+<td>interests</td>
+<td>NULL</td>
+<td>User intersts. Address field. Maximum character length 200.</td>
+</tr>
+<tr>
+<td>linkedin_profile</td>
+<td>NULL</td>
+<td>URL field. LinkedIn URL.</td>
+</tr>
+<tr>
+<td>location</td>
+<td>NULL</td>
+<td>Residing city of the user.</td>
+</tr>
+</tbody></table>
+
+<p>Only send the parameter which needs to be updated. For example, to update the first name only send <code>first_name</code> param and its corresponding new value.</p>
+
+<aside class="warning">
+Note: Provide initial value along with additions for <code>interests</code> parameter, as the same would be updated.
+If only the updated value is provided without initial then <code>interests</code> will only contain updated value
+</aside>
+
+<blockquote>
+<p>Request</p>
+
+<p>PUT user/[emp_user_id]/?user_id=15</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banshankari"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hiking"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logged_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"personal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89XXXXXXX2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67XXXXXX61"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"permanent_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"current_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hiking"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"business"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9XXXXXX31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banshankari"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_id"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"designation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department Head"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mechanical"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blood_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O+ve"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date_of_joining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://url/to/linkedin/profile/"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='delete-user'>Delete User</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>None</td>
+<td>Id of the user who is sending the request.</td>
+</tr>
+<tr>
+<td>emp_user_id</td>
+<td>None</td>
+<td>Id of the user whose details need to be fetched.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request</p>
+
+<p>DELETE user/[emp_user_id]/?user_id=15</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User details fetched"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"logged_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"personal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name last_name"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89XXXXXXX2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67XXXXXX61"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"permanent_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"current_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"music, art"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"business"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work@email.address"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9XXXXXX31"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"loaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangalore"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_id"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"designation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department Head"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mechanical"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blood_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O+ve"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date_of_joining"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-07-11"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://url/to/linkedin/profile/"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='fetch-all-users'>Fetch All Users</h2>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -954,7 +1383,7 @@ If <code>role</code> is provided then permissions for this <code>role</code> wil
 </tr>
 </tbody></table>
 
-<p>The <code>user_id</code> is an unique integer identifier for a role.</p>
+<p>The <code>role_id</code> is an unique integer identifier for a role.</p>
 
 <blockquote>
 <p>Request</p>
@@ -988,16 +1417,14 @@ If <code>role</code> is provided then permissions for this <code>role</code> wil
 </tr>
 </tbody></table>
 
-<p>The <code>user_id</code> is an unique integer identifier for a role.</p>
+<p>The <code>role_id</code> is an unique integer identifier for a role.</p>
 
 <blockquote>
 <p>Request</p>
 
 <p>DELETE user/[user_id]/role?role=[role_id]</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Response</p>
@@ -1996,7 +2423,7 @@ Correspondingly, the response will contain a boolean value(true / false) in each
 </tr>
 </tbody></table>
 
-<p>Only send the parameter which needs to be updated. For example, to update the project name only send <code>name</code> param and its corresponding new value.</p>
+<p>Only send the parameter which needs to be updated. For example, to update the group name only send <code>name</code> param and its corresponding new value.</p>
 
 <p>The <code>group_id</code> is an unique integer identifier for a group. </p>
 
