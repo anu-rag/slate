@@ -156,6 +156,40 @@ user_id | None | Id of the user who is sending the request.
 
 # Perms
 
+List of available permissions with code:
+
+name                             | code           
+---------------------------------|----------------
+Create a project                 | PJ_CR          
+Edit a project                   | PJ_UP          
+Delete a project                 | PJ_DL          
+View a project                   | PJ_RD          
+Project Complete                 | PJ_CMP         
+Close Project                    | PJ_CL          
+Create a user                    | USR_CR         
+Delete a user                    | USR_DL         
+Update User Business Information | USR_UP_BI_INFO 
+Update User Personal Information | USR_UP_PR_INFO 
+View User Business Information   | USR_RD_BI_INFO 
+View User Personal Information   | USR_RD_PR_INFO 
+Create team in Project           | GR_CR          
+Update team in Project           | GR_UP          
+Delete team in Project           | GR_DL          
+View team in Project             | GR_RD          
+Create a task                    | TK_CR          
+Update a task                    | TK_UP          
+Delete a task                    | TK_DL          
+View a task                      | TK_RD          
+Rate a task                      | TK_RT          
+Close a task                     | TK_CL          
+Follow all tasks                 | TK_FLA         
+View Reports                     | RP_RD          
+Create role                      | RL_CR          
+Update role                      | RL_UP          
+Delete role                      | RL_DL          
+View role                        | RL_RD          
+Assign role                      | RL_ASGN        
+
 ## Get All Permissions
 
 This API can be used to retrieve permissions regargding a specific role, and also for fetching all the permissions available.
@@ -186,38 +220,33 @@ role | None | Id of the role.
         "actions": [
             {
                 "id": 1,
-                "name": "Create a task",
-                "description": null
+                "name": "Create a project",
+                "description": null,
+                "code": "PJ_CR"
             },
             {
                 "id": 2,
-                "name": "Create a project",
-                "description": null
+                "name": "Edit a project",
+                "description": null,
+                "code": "PJ_UP"
             },
             {
                 "id": 3,
-                "name": "Create a user",
-                "description": null
+                "name": "Delete a project",
+                "description": null,
+                "code": "PJ_DL"
             },
             {
                 "id": 4,
-                "name": "Project Complete",
-                "description": null
+                "name": "View a project",
+                "description": null,
+                "code": "PJ_RD"
             },
             {
                 "id": 5,
-                "name": "Delete a user",
-                "description": null
-            },
-            {
-                "id": 6,
-                "name": "Cretae Project Team",
-                "description": null
-            },
-            {
-                "id": 7,
-                "name": "Close a task",
-                "description": null
+                "name": "Project Complete",
+                "description": null,
+                "code": "PJ_CMP"
             }
         ]
     }

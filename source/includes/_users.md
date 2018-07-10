@@ -156,6 +156,7 @@ emp_user_id | None | Id of the user whose details need to be fetched.
 
 Parameter | Default | Description
 --------- | ------- | -----------
+emp_user_id         | None    | Id of the user whose details need to be updated.
 first_name          | None    | First name of the user. Maximum character length 30.
 last_name           | None    | Surname of the user. Maximum character length 30.
 personal_email      | None    | Email of the user. Maximum character length 254.
@@ -227,7 +228,7 @@ If only the updated value is provided without initial then <code>interests</code
 Parameter | Default | Description
 --------- | ------- | -----------
 user_id | None | Id of the user who is sending the request.
-emp_user_id | None | Id of the user whose details need to be fetched.
+emp_user_id | None | Id of the user whose details need to be deleted.
 
 > Request
 >
