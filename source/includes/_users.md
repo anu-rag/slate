@@ -48,7 +48,7 @@ Note: <code>interests</code> is a comma-separated value.
     "interests": "music, art",
     "work_email": "work@email.address",
     "contact_number": "9XXXXXX31",
-    "employee_id": "unique_id",
+    "employee_id": "unique_employee_id",
     "designation": "Department Head",
     "department": "Mechanical",
     "location": "Bangalore",
