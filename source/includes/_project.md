@@ -2,22 +2,13 @@
 
 ## Create Project
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-name | None | The name of the project to be kept. Maximum character length 250.
+name      | None | The name of the project to be kept. Maximum character length 250.
 description | Null | The description of the project. Maximum character length 500.
 start_date  | Null | The start date of the project. The start date cannot exceed a year from today's date.
-end_date | Null | The end date of the project. The end date cannot exceed a decade from today's date.
-members | Null | Array of objects conataining attributes `id`, and `lead`. Ex: [{'id': 19, 'lead': true}, {'id': 20, 'lead': false}]
+end_date  | Null | The end date of the project. The end date cannot exceed a decade from today's date.
 
-There will only be `Project Lead`s added during creation of project. No other members can be added with this API.
-Other members of the project may be added while creating workgroups(refer [work groups](#group))
-
-
-<aside class="notice">
-Note: The members format maybe changed in future.
-</aside>
 
 > Request
 >
@@ -25,12 +16,10 @@ Note: The members format maybe changed in future.
 
 ```json
 {
-	"user_id": 15,
 	"name": "Test Project",
 	"description": "",
 	"start_date": "2018-7-01 17:14:7",
-	"end_date": "2018-7-10 17:14:7",
-	"members": [{"id": 19, "lead": true}, {"id": 23, "lead": false}, {"id": 24, "lead": true}, {"id": 25, "lead": false}, {"id": 19, "lead": false}, {"id": 15, "lead": false}, {"id": 15, "lead": false}]
+	"end_date": "2018-7-10 17:14:7"
 }
 ```
 
@@ -42,25 +31,58 @@ Note: The members format maybe changed in future.
     "status_text": "Created",
     "message": "Project created",
     "data": {
-        "project_id": 9
+        "id": 1,
+        "creation_date": "2018-07-14T13:30:12.435",
+        "name": "Project 2",
+        "description": "",
+        "start_date": "2018-07-01T17:14:07",
+        "end_date": "2018-07-10T17:14:07",
+        "creator": {
+            "id": 2,
+            "logged_in": true,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
+            },
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
+            }
+        },
+        "status": null
     }
 }
 ```
 
 ## Get Project
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
+project_id | None | Id of the project.
 
-The `project_id` is an unique integer identifier for a project. Pass this value to get the corresponding project details.
-`user_id` is part of query params.
 Only open projects can be fetched by this API.
 
 
 > Request
 >
-> GET project/[project_id]/?user_id=15
+> GET project/[project_id]/
 
 ```json
 
@@ -72,51 +94,125 @@ Only open projects can be fetched by this API.
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Members fetched",
+    "message": "Project details fetched",
     "data": {
-        "name": "Test Projet Name",
-        "description": " ",
-        "start_date": "2018-06-01T11:44:07",
-        "end_date": "2018-06-10T11:44:07",
-        "members": [
-            {
-                "id": 15,
-                "name": "",
-                "lead": false
+        "id": 1,
+        "creation_date": "2018-07-14T13:29:27",
+        "name": "Sucees Project",
+        "description": "Test this description",
+        "start_date": "2019-06-01T17:14:07",
+        "end_date": "2018-07-10T17:14:07",
+        "creator": {
+            "id": 2,
+            "logged_in": true,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
             },
-            {
-                "id": 19,
-                "name": "",
-                "lead": false
-            },
-            {
-                "id": 21,
-                "name": "",
-                "lead": false
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
             }
-        ]
+        },
+        "status": null,
+        "managers": [
+            {
+                "id": 5,
+                "logged_in": false,
+                "username": "username",
+                "status": "ACTIVE",
+                "personal": {
+                    "email": "your@email.address",
+                    "first_name": "first_name",
+                    "last_name": "last_name",
+                    "full_name": "first_name last_name",
+                    "mobile_number": "89XXXXXXX2",
+                    "emergency_contact": "67XXXXXX61",
+                    "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                    "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                    "interests": "music, art"
+                },
+                "business": {
+                    "company_name": null,
+                    "work_email": "work@email.address",
+                    "contact_number": "9XXXXXX31",
+                    "loaction": "Bangalore",
+                    "employee_id": "unique_id",
+                    "designation": "Department Head",
+                    "department": "Mechanical",
+                    "blood_group": "O+ve",
+                    "date_of_joining": "2015-07-11",
+                    "linkedin_profile": "https://url/to/linkedin/profile/"
+                }
+            },
+            {
+                "id": 7,
+                "logged_in": true,
+                "username": "anurag5",
+                "username": "username",
+                "status": "ACTIVE",
+                "personal": {
+                    "email": "your@email.address",
+                    "first_name": "first_name",
+                    "last_name": "last_name",
+                    "full_name": "first_name last_name",
+                    "mobile_number": "89XXXXXXX2",
+                    "emergency_contact": "67XXXXXX61",
+                    "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                    "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                    "interests": "music, art"
+                },
+                "business": {
+                    "company_name": null,
+                    "work_email": "work@email.address",
+                    "contact_number": "9XXXXXX31",
+                    "loaction": "Bangalore",
+                    "employee_id": "unique_id",
+                    "designation": "Department Head",
+                    "department": "Mechanical",
+                    "blood_group": "O+ve",
+                    "date_of_joining": "2015-07-11",
+                    "linkedin_profile": "https://url/to/linkedin/profile/"
+                }
+            }
+        ],
+        "members": []
     }
 }
 ```
 
 ## Update Project
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
+project_id | None | Id of the project.
 name | Null | A new name for the project.
 description | Null | A new description for the project.
 start_date | Null | Changed start_date, not more than a year from today's date.
 end_date | Null | Changed end_date, not more than a decade from today's date.
-closed | false | To mark a project as closed.
-
-The `project_id` is an unique integer identifier for a project.
 
 Only send the parameter which needs to be updated. For example, to update the project name only send `name` param and its corresponding new value.
 
 > Request
 >
-> PUT project/[project_id]/?user_id=15
+> PUT project/[project_id]/
 
 ```json
 {
@@ -131,21 +227,58 @@ Only send the parameter which needs to be updated. For example, to update the pr
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Updated"
+    "message": "Updated",
+    "data": {
+        "id": 1,
+        "creation_date": "2018-07-14T13:29:27",
+        "name": "Test Projet Success",
+        "description": "Test this description",
+        "start_date": "2018-07-01T17:14:07",
+        "end_date": "2018-07-10T17:14:07",
+        "creator": {
+            "id": 2,
+            "logged_in": true,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
+            },
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
+            }
+        },
+        "status": null
+    }
 }
 ```
 
 ## Delete Project
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
+project_id | None | Id of the project.
 
-The `project_id` is an unique integer identifier for a project. 
 
 > Request
 >
-> DELETE project/[project_id]/?user_id=15
+> DELETE project/[project_id]/
 
 ```json
 
@@ -157,19 +290,61 @@ The `project_id` is an unique integer identifier for a project.
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Deleted project with id: [project_id]"
+    "message": "Deleted project with id: 1",
+    "data": {
+        "id": 1,
+        "creation_date": "2018-07-14T14:49:43",
+        "name": "Project 3",
+        "description": "",
+        "start_date": "2019-07-01T17:14:07",
+        "end_date": "2029-07-10T17:14:07",
+        "creator": {
+            "id": 2,
+            "logged_in": true,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
+            },
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
+            }
+        },
+        "status": null
+    }
 }
 ```
 
 ## Add Members
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-members | None | Array of objects conataining attributes `id`, and `lead`.
+project_id | None | Id of the project.
+managers | None | Array of integers(user_ids). Maximum length 20.
+
+
+There will only be `Project Managers` added. No other members can be added with this API.
+Other members of the project may be added while adding members to workgroups(refer [work groups](#group)).
 
 <aside class="notice">
-Note: Duplicate members are not supported for one project. A member can be added only once.
+Note: Duplicate managers are not supported for one project. A manager can be added only once.
 </aside>
 
 > Request
@@ -178,8 +353,7 @@ Note: Duplicate members are not supported for one project. A member can be added
 
 ```json
 {
-	"user_id": 15,
-	"members": [{"id": 20, "lead": false}]
+	"managers": [5, 7]
 }
 ```
 
@@ -189,16 +363,76 @@ Note: Duplicate members are not supported for one project. A member can be added
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Members added to project"
+    "message": "Members added to project",
+    "data": [
+        {
+            "id": 5,
+            "logged_in": false,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
+            },
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
+            }
+        },
+        {
+            "id": 7,
+            "logged_in": true,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
+            },
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
+            }
+        }
+    ]
 }
 ```
 
 ## Remove Members
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-members | None | Array of integers(user_ids).
+project_id | None | Id of the project
+managers | None | Array of integers(user_ids). Maximum length 20.
 
 Only if the user_id is part of the project will the user be removed, otherwise not.
 
@@ -208,8 +442,7 @@ Only if the user_id is part of the project will the user be removed, otherwise n
 
 ```json
 {
-	"user_id": 15,
-	"members": [15, 19, 23]
+	"managers": [15, 19, 23]
 }
 ```
 
@@ -225,15 +458,30 @@ Only if the user_id is part of the project will the user be removed, otherwise n
 
 ## Get All Projects
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
+filter_by | ON_GOING | Filters that can be applied on the projects 
+fromId    | 1       | Start range
+toId      | 20      | End range
 
-Get all projects related to a user (either created by or assigned to).
+Following filters are available:
+
+* ON_GOING - Currently active projects
+* COMPLETED - All projects marked as complete
+* FAV - All favourited projects by a user
+
+Attributes must be provided as params.
+
+<aside class="notice">
+Note: Range between <code>fromId</code> and <code>toId</code> cannot be greater than 20.
+</aside>
+
+User with `View all projects` permission(admin) can see all projects in the organisation else
+others will see only projects they are involved in.
 
 > Request
 >
-> GET project/all/?user_id=15
+> GET project/all/
 
 ```json
 
@@ -247,57 +495,201 @@ Get all projects related to a user (either created by or assigned to).
     "status_text": "Success. OK.",
     "message": "Projects found",
     "data": {
-        "projects": [
+        "data_list": [
             {
-                "id": 1,
-                "description": " ",
-                "name": "Test Projet Name",
-                "start_date": "2018-06-01T11:44:07",
-                "end_date": "2018-06-10T11:44:07",
-                "created_by": 28,
-                "members": [
+                "id": 2,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null,
+                "favourite": false,
+                "managers": [
                     {
-                        "id": 15,
-                        "name": "",
-                        "lead": false
-                    },
-                    {
-                        "id": 19,
-                        "name": "",
-                        "lead": false
-                    },
-                    {
-                        "id": 21,
-                        "name": "",
-                        "lead": false
+                        "info": "user's personal business info"
                     }
                 ]
             },
             {
-                "id": 7,
+                "id": 3,
+                "creation_date": "2018-07-14T14:31:50",
+                "name": "Project 3",
                 "description": "",
-                "name": "Test Project 5",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2018-07-10T17:14:07",
-                "created_by": 15,
-                "members": [
+                "start_date": "2018-05-10T17:14:07",
+                "end_date": "2021-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null,
+                "favourite": true,
+                "managers": [
                     {
-                        "id": 20,
-                        "name": "",
-                        "lead": false
+                        "info": "user's personal business info"
                     },
                     {
-                        "id": 24,
-                        "name": "",
-                        "lead": true
-                    },
-                    {
-                        "id": 25,
-                        "name": "",
-                        "lead": false
+                       "info": "user's personal business info" 
                     }
                 ]
             }
+        ]
+    }
+}
+```
+
+## Mark project(s) as complete
+
+Attribute | Default | Description
+--------- | ------- | -----------
+projects  | None    | Array of integers(project_ids). Maximum length 20.
+
+
+> Request
+>
+> PUT project/action/complete
+
+```json
+{
+    "projects": [1]
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Projects complete !"
+}
+```
+
+## Mark project(s) as favourite
+
+Attribute | Default | Description
+--------- | ------- | -----------
+projects  | None    | Array of integers(project_ids). Maximum length 20.
+
+
+> Request
+>
+> POST project/action/favourite
+
+```json
+{
+    "projects": [2, 3]
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Favourites added !",
+    "data": {
+        "user": {
+            "info": "user's personal business info" 
+        },
+        "projects": [
+            {
+                "id": 2,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2018-07-10T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            {
+                "id": 3,
+                "creation_date": "2018-07-14T14:31:50",
+                "name": "Project 3",
+                "description": "",
+                "start_date": "2019-07-01T17:14:07",
+                "end_date": "2018-07-10T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            }
+        ]
+    }
+}
+```
+
+## Mark project(s) as unfavourite
+
+Attribute | Default | Description
+--------- | ------- | -----------
+projects  | None    | Array of integers(project_ids). Maximum length 20.
+
+
+> Request
+>
+> PUT project/action/unfavourite
+
+```json
+{
+    "projects": [1]
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Favourites removed !"
+}
+```
+
+## Project Activity
+
+Attribute | Default | Description
+--------- | ------- | -----------
+project_id| None    | Id of the project
+fromId    | 1       | Start range
+toId      | 20      | End range
+
+Fetch the activity pertaining to a project.
+
+Attributes must be provided as params.
+
+<aside class="notice">
+Note: Range between <code>fromId</code> and <code>toId</code> cannot be greater than 20.
+</aside>
+
+> Request
+>
+> GET project/[project_id]/activity
+
+```json
+
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Project activity fetched",
+    "data": {
+        "data_list": [
+            "user x created project Project ....",
+            "user x updated project details for Project ....",
+            "user y added user z  as manager for Project ....",
+            "user y added user z  as manager for Project ....",
+            "user x removed some managers from project Project ...."
         ]
     }
 }

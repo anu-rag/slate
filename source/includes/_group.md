@@ -1,14 +1,12 @@
-# Group
+# WorkGroup
 
 ## Create Group
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | A unique identifier for every user.
 name | Null | The name of the group to be kept. Maximum character length 250.
 description | Null | The description of the group. Maximum character length 500.
 project | Null | Id of the project to which the group will belong to.
-members | Null | Array of objects conataining attributes `id`, and `lead`. Ex: [{'id': 19, 'lead': true}, {'id': 20, 'lead': false}]
 
 > Request
 >
@@ -16,11 +14,9 @@ members | Null | Array of objects conataining attributes `id`, and `lead`. Ex: [
 
 ```json
 {
-	"user_id": 15,
-	"name": "Department 1",
-	"description": "",
-	"project": 1,
-	"members": [{"id": 23, "lead": false}, {"id": 24, "lead": true}, {"id": 25, "lead": false}]
+    "name": "Department 1",
+    "description": "",
+    "project": 2
 }
 ```
 
@@ -31,21 +27,38 @@ members | Null | Array of objects conataining attributes `id`, and `lead`. Ex: [
     "status_code": 201,
     "status_text": "Created",
     "message": "Group created",
-    "group_id": 4
+    "data": {
+        "id": 1,
+        "creation_date": "2018-07-16T18:16:13.787",
+        "name": "Department 1",
+        "description": "",
+        "project": {
+            "id": 2,
+            "creation_date": "2018-07-14T13:30:12",
+            "name": "Project 2",
+            "description": "",
+            "start_date": "2018-07-01T17:14:07",
+            "end_date": "2020-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "status": null
+    }
 }
 ```
 
 ## Get Group
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
+group_id  | None    | Id of group
 
-The `group_id` is an unique integer identifier for a group. 
 
 > Request
 >
-> GET group/[group_id]?user_id=15
+> GET group/[group_id]
 
 ```json
 
@@ -57,15 +70,29 @@ The `group_id` is an unique integer identifier for a group.
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Members fetched",
+    "message": "Group fetched",
     "data": {
-        "name": "Test Department",
+        "id": 5,
+        "creation_date": "2018-07-19T22:19:17",
+        "name": "Department 2",
         "description": "",
-        "members": [
+        "project": {
+            "id": 2,
+            "creation_date": "2018-07-14T13:30:12",
+            "name": "Project 2",
+            "description": "",
+            "start_date": "2018-07-01T17:14:07",
+            "end_date": "2020-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "status": "ACTIVE",
+        "members": [],
+        "managers": [
             {
-                "id": 23,
-                "name": "",
-                "lead": true
+                "info": "user's personal business info"
             }
         ]
     }
@@ -74,26 +101,22 @@ The `group_id` is an unique integer identifier for a group.
 
 ## Update Group
 
-Parameter | Default | Description
---------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-name | Null | A new name for the group.
-description | Null | A new description for the group.
-is_active | false | To mark a group as inactive.
+Attribute  | Default | Description
+---------  | ------- | -----------
+group_id   | None    | Id of group
+name       | Null    | A new name for the group.
+description| Null    | A new description for the group.
 
 Only send the parameter which needs to be updated. For example, to update the group name only send `name` param and its corresponding new value.
 
-The `group_id` is an unique integer identifier for a group. 
-
 > Request
 >
-> PUT group/[group_id]?user_id=15
+> PUT group/[group_id]
 
 ```json
 {
-	"name": "Procurement Department",
-	"description": "",
-	"is_active": true
+    "name": "Procurement Department",
+    "description": ""
 }
 ```
 
@@ -103,21 +126,38 @@ The `group_id` is an unique integer identifier for a group.
 {
     "status_code": 200,
     "status_text": "Success. OK.",
-    "message": "Updated !"
+    "message": "Updated !",
+    "data": {
+        "id": 1,
+        "creation_date": "2018-07-16T18:16:13",
+        "name": "Procurement Department",
+        "description": "",
+        "project": {
+            "id": 2,
+            "creation_date": "2018-07-14T13:30:12",
+            "name": "Project 2",
+            "description": "",
+            "start_date": "2018-07-01T17:14:07",
+            "end_date": "2020-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "status": null
+    }
 }
 ```
 
 ## Delete Group
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-
-The `group_id` is an unique integer identifier for a group. 
+group_id  | None    | Id of group
 
 > Request
 >
-> DELETE group/[group_id]?user_id=15
+> DELETE group/[group_id]
 
 ```json
 
@@ -135,11 +175,11 @@ The `group_id` is an unique integer identifier for a group.
 
 ## Add Group Members
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-project | Null | Id of the project which the group be associated.
-members | Null | Array of objects conataining attributes `id`, and `lead`.
+group_id  | None    | Id of group
+members   | Null    | Array of objects conataining attributes `id`, and `lead`. Maximum length 20.
+
 
 <aside class="notice">
 Note: Duplicate members are not supported for one group. A member can be added only once.
@@ -151,8 +191,6 @@ Note: Duplicate members are not supported for one group. A member can be added o
 
 ```json
 {
-	"user_id": 15,
-	"project": 1,
 	"members": [{"id": 23, "lead": false}, {"id": 24, "lead": true}]
 }
 ```
@@ -161,29 +199,38 @@ Note: Duplicate members are not supported for one group. A member can be added o
 
 ```json
 {
-    "status_code": 201,
-    "status_text": "Created",
-    "message": "Members added"
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Members added",
+    "data": [
+        {
+            "info": "user's personal business info",
+            "lead": false
+        },
+        {
+            "info": "user's personal business info",
+            "lead": true
+        }
+    ]
 }
 ```
 
 ## Remove Group Members
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-members | Null | Array of integers(user_ids).
+group_id  | None    | Id of group
+members   | None    | Array of integers(user_ids). Maximum length 20.
 
 Only if the user_id is part of the group will the user be removed, otherwise not.
 
 > Request
 >
-> PUT group/[group_id]/member/?user_id=15
+> PUT group/[group_id]/member/
 
 ```json
 {
-	"user_id": 15,
-	"members": [23, 24]
+    "members": [3, 4]
 }
 ```
 
@@ -199,18 +246,26 @@ Only if the user_id is part of the group will the user be removed, otherwise not
 
 ## Get All Groups
 
-Parameter | Default | Description
+This API fetches the details of the project, all active groups within this project and only the group leads (project leads)
+
+
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-project | None | Id of the project for which the groups will be fetched.
+project   | None    | Id of the project for which the groups will be fetched.
+fromId    | 1       | Start range
+toId      | 20      | End range
+
+Attributes must be provided as params.
 
 <aside class="notice">
 Note: Only active groups in a project will be fetched. Only on-going project groups can be fetched.
+Note: Range between <code>fromId</code> and <code>toId</code> cannot be greater than 20.
 </aside>
+
 
 > Request
 >
-> GET group/list?user_id=15&project=1
+> GET group/list
 
 ```json
 
@@ -224,23 +279,52 @@ Note: Only active groups in a project will be fetched. Only on-going project gro
     "status_text": "Success. OK.",
     "message": "Groups found",
     "data": {
+        "project": {
+            "id": 2,
+            "creation_date": "2018-07-14T13:30:12",
+            "name": "Project 2",
+            "description": "",
+            "start_date": "2018-07-01T17:14:07",
+            "end_date": "2020-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "managers": [
+            {
+                "info": "user's personal business info",
+            }
+        ],
         "groups": [
             {
-                "id": 2,
+                "id": 1,
+                "creation_date": "2018-07-16T18:16:13",
                 "name": "Procurement Department",
                 "description": "",
-                "members": [
+                "status": "ACTIVE",
+                "lead": []
+            },
+            {
+                "id": 5,
+                "creation_date": "2018-07-19T22:19:17",
+                "name": "Department 2",
+                "description": "",
+                "status": "ACTIVE",
+                "lead": [
                     {
-                        "id": 19,
-                        "name": "",
+                        "info": "user's personal business info",
                         "lead": true
-                    },
-                    {
-                        "id": 21,
-                        "name": "",
-                        "lead": false
                     }
                 ]
+            },
+            {
+                "id": 6,
+                "creation_date": "2018-07-23T19:37:04",
+                "name": "Procurement Department",
+                "description": "",
+                "status": null,
+                "lead": []
             }
         ]
     }

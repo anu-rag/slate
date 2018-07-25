@@ -11,8 +11,8 @@ includes:
   - role
   - users
   - project
-  - task
   - group
+  - task
   - errors
 
 search: true

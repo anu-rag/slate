@@ -200,6 +200,145 @@ This API can be used to fetch all 'ACTIVE' roles defined with the permissions fo
 }
 ```
 
+## Role Hierarchy
+
+This API is for fetching role hierarchy in the system.
+
+> Request
+>
+> GET role/hierarchy
+
+```json
+
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Roles hierarchy",
+    "data": {
+        "id": 1,
+        "name": "Admin",
+        "description": "Dev Admin",
+        "status": null,
+        "parent": {},
+        "user_count": 1,
+        "subordinates": [
+            {
+                "id": 2,
+                "name": "sub-admin",
+                "description": "Admin Delegate",
+                "status": "ACTIVE",
+                "parent": {
+                    "id": 1,
+                    "name": "Admin",
+                    "description": "Dev Admin"
+                },
+                "user_count": 1,
+                "subordinates": [
+                    {
+                        "id": 3,
+                        "name": "HR",
+                        "description": "Admin Delegate",
+                        "status": "ACTIVE",
+                        "parent": {
+                            "id": 2,
+                            "name": "sub-admin",
+                            "description": "Admin Delegate"
+                        },
+                        "user_count": 0,
+                        "subordinates": []
+                    },
+                    {
+                        "id": 5,
+                        "name": "HOD",
+                        "description": "Head Of Department: Civil",
+                        "status": "ACTIVE",
+                        "parent": {
+                            "id": 2,
+                            "name": "sub-admin",
+                            "description": "Admin Delegate"
+                        },
+                        "user_count": 0,
+                        "subordinates": [
+                            {
+                                "id": 8,
+                                "name": "Chief Engineer",
+                                "description": "Chief Engineer for the department",
+                                "status": "ACTIVE",
+                                "parent": {
+                                    "id": 5,
+                                    "name": "HOD",
+                                    "description": "Head Of Department: Civil"
+                                },
+                                "user_count": 0,
+                                "subordinates": [
+                                    {
+                                        "id": 10,
+                                        "name": "Union Leader",
+                                        "description": "Union leader under Chief Engineer",
+                                        "status": "ACTIVE",
+                                        "parent": {
+                                            "id": 8,
+                                            "name": "Chief Engineer",
+                                            "description": "Chief Engineer for the department"
+                                        },
+                                        "user_count": 0,
+                                        "subordinates": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 9,
+                                "name": "Chief Advisor",
+                                "description": "Chief Advisor for the department",
+                                "status": "ACTIVE",
+                                "parent": {
+                                    "id": 5,
+                                    "name": "HOD",
+                                    "description": "Head Of Department: Civil"
+                                },
+                                "user_count": 0,
+                                "subordinates": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 6,
+                        "name": "HOD",
+                        "description": "Head Of Department: CS",
+                        "status": "ACTIVE",
+                        "parent": {
+                            "id": 2,
+                            "name": "sub-admin",
+                            "description": "Admin Delegate"
+                        },
+                        "user_count": 0,
+                        "subordinates": []
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "HR",
+                "description": "Head Of Department",
+                "status": "ACTIVE",
+                "parent": {
+                    "id": 1,
+                    "name": "Admin",
+                    "description": "Dev Admin"
+                },
+                "user_count": 1,
+                "subordinates": []
+            }
+        ]
+    }
+}
+```
+
 # Perms
 
 List of available permissions with code:
@@ -378,7 +517,7 @@ role | None | Id of the role.
 
 This API is used for saving permissions for a specific role.
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
 role | None | Id of the role.
 action_list | None | Array of integers(permission IDs).
@@ -437,7 +576,7 @@ action_list | None | Array of integers(permission IDs).
 
 ## Remove Permissions
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
 role | None | Id of the role.
 action_list | None | Array of integers(permission IDs).
