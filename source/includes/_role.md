@@ -133,7 +133,7 @@ role_id | None | An unique integer identifier for a role.
 }
 ```
 
-## Fetch All Roles
+## Get All Roles
 
 This API can be used to fetch all 'ACTIVE' roles defined with the permissions for the corresponding roles.
 

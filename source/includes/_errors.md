@@ -13,5 +13,6 @@ Error Code | Meaning
 201 | Created -- Request has been fulfilled and resulted in a new resource being created.
 400 | Bad Request -- Your request is invalid.
 401 | Unauthorized -- Your API token is either invalid, expired, or inactive. For inactive users also.
+403 | Forbidden -- Your API token is not allowed to perform this action.
 404 | Not Found -- The specified resource could not be found.
 500 | Internal Server Error -- We had a problem with our server. Try again later.

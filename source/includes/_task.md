@@ -1059,7 +1059,7 @@ tasks     | None     | Array of integers(task_ids). Maximum length 20.
 
 
 <aside class="notice">
-Note: Only assignees can mark task as read. This is stored at a task level.
+Note: Only an assignee can mark task as read. This is stored at a task level.
 </aside>
 
 > Request
@@ -1116,7 +1116,7 @@ Attribute | Default  | Description
 tasks     | None     | Array of integers(task_ids). Maximum length 20.
 
 <aside class="notice">
-Note: Only assignees can mark task as complete.
+Note: Only an assignee can mark task as complete.
 </aside>
 
 
@@ -1269,12 +1269,14 @@ Note: Only assigners can mark task as closed.
 }
 ```
 
+# Task Comment
+
 ## Add Comment
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-comment | Null | Comment to add to a task. Maximum character length 1000.
+task_id   | None    | Id of the task
+comment   | Null    | Comment to add to a task. Maximum character length 1000.
 
 
 > Request
@@ -1283,7 +1285,6 @@ comment | Null | Comment to add to a task. Maximum character length 1000.
 
 ```json
 {
-	"user_id": 15,
 	"comment": "Yay! Now I can add comments"
 }
 ```
@@ -1294,29 +1295,101 @@ comment | Null | Comment to add to a task. Maximum character length 1000.
 {
     "status_code": 201,
     "status_text": "Created",
-    "message": "Commented added",
+    "message": "Comment added",
     "data": {
+        "id": 1,
         "comment": "Yay! Now I can add comments",
-        "commenter": {
-            "id": 15,
-            "name": ""
+        "commentor": {
+            "id": 2,
+            "logged_in": true,
+            "username": "username",
+            "status": "ACTIVE",
+            "personal": {
+                "email": "your@email.address",
+                "first_name": "first_name",
+                "last_name": "last_name",
+                "full_name": "first_name last_name",
+                "mobile_number": "89XXXXXXX2",
+                "emergency_contact": "67XXXXXX61",
+                "permanent_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "current_address": "#34, 11th Cross 3rd Main, Jayanagar 4th Block, Bangalore, Karnataka",
+                "interests": "music, art"
+            },
+            "business": {
+                "company_name": null,
+                "work_email": "work@email.address",
+                "contact_number": "9XXXXXX31",
+                "loaction": "Bangalore",
+                "employee_id": "unique_id",
+                "designation": "Department Head",
+                "department": "Mechanical",
+                "blood_group": "O+ve",
+                "date_of_joining": "2015-07-11",
+                "linkedin_profile": "https://url/to/linkedin/profile/"
+            }
         },
-        "task": 1
+        "task": {
+            "id": 1,
+            "creation_date": "2018-07-17T16:58:46",
+            "name": "Test Task",
+            "description": "",
+            "start_date": "2018-06-01T17:14:07",
+            "end_date": "2018-06-10T17:14:07",
+            "status": null,
+            "priority": false,
+            "assigner": {
+                "info": "assigner personal business info"
+            },
+            "project": {
+                "id": 2,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "assignee": {
+                "info": "assignee personal business info"
+            },
+            "group": {
+                "id": 3,
+                "creation_date": "2018-07-17T20:02:23",
+                "name": "Department 1",
+                "description": "",
+                 "project": {
+                    "id": 3,
+                    "creation_date": "2018-07-14T13:30:12",
+                    "name": "Project 2",
+                    "description": "",
+                    "start_date": "2018-07-01T17:14:07",
+                    "end_date": "2020-07-01T17:14:07",
+                    "creator": {
+                        "info": "creator personal business info"
+                    },
+                    "status": null
+                },
+                "status": "ACTIVE"
+            }
+        }
     }
 }
 ```
 
-## Fetch Comments
+## Get Comments
 
-Parameter | Default | Description
+Attribute | Default | Description
 --------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
+task_id   | None    | Id of the task
 
 Get all comments for a task identified by `[task_id]`
 
 > Request
 >
-> GET task/[task_id]/comment?user_id=15
+> GET task/[task_id]/comment
 
 ```json
 
@@ -1327,78 +1400,196 @@ Get all comments for a task identified by `[task_id]`
 ```json
 {
     "status_code": 200,
-    "status_text": "Created",
+    "status_text": "Success. OK.",
     "message": "Commented fetched",
-    "data": [
-        {
-            "id": 1,
-            "comment": "some\\ comment",
-            "added_on": "2018-06-19T19:37:40",
-            "task": 4,
-            "added_by": {
-                "id": 34,
-                "name": ""
-            }
+    "data": {
+        "id": 1,
+        "creation_date": "2018-07-17T16:58:46",
+        "name": "Test Task",
+        "description": "",
+        "start_date": "2018-06-01T17:14:07",
+        "end_date": "2018-06-10T17:14:07",
+        "status": null,
+        "priority": false,
+        "assigner": {
+            "info": "assigner personal business info"
         },
-        {
+        "project": {
             "id": 2,
-            "comment": "some\\ comment",
-            "added_on": "2018-06-19T19:54:19",
-            "task": 4,
-            "added_by": {
-                "id": 34,
-                "name": ""
-            }
+            "creation_date": "2018-07-14T13:30:12",
+            "name": "Project 2",
+            "description": "",
+            "start_date": "2018-07-01T17:14:07",
+            "end_date": "2020-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
         },
-        {
+        "assignee": {
+            "info": "assignee personal business info"
+        },
+        "group": {
             "id": 3,
-            "comment": "some more comment",
-            "added_on": "2018-06-19T19:55:04",
-            "task": 4,
-            "added_by": {
-                "id": 34,
-                "name": ""
-            }
+            "creation_date": "2018-07-17T20:02:23",
+            "name": "Department 1",
+            "description": "",
+             "project": {
+                "id": 3,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "status": "ACTIVE"
         },
-        {
-            "id": 4,
-            "comment": "some comment",
-            "added_on": "2018-06-19T23:10:20",
-            "task": 4,
-            "added_by": {
-                "id": 34,
-                "name": ""
+        "comments": [
+            {
+                "id": 1,
+                "comment": "some comment",
+                "commentor": {
+                    "info": "commentor personal business info"
+                }
             }
-        },
-        {
-            "id": 5,
-            "comment": "some comment",
-            "added_on": "2018-06-19T23:11:55",
-            "task": 4,
-            "added_by": {
-                "id": 34,
-                "name": ""
-            }
-        }
-    ]
+        ]
+    }
 }
 ```
 
+## Update Comment
+
+Attribute  | Default | Description
+---------- | ------- | -----------
+task_id    | None    | Id of the task
+comment_id | None    | Id of the comment to update
+comment    | None    | New comment
+
+`comment_id` should be provided as params.
+
+> Request
+>
+> PUT task/[task_id]/comment?comment_id=[comment_id]
+
+```json
+{
+    "comment": "new comment"
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Comment Updated !",
+    "data": {
+        "id": 1,
+        "comment": "new comment",
+        "commentor": {
+            "info": "commentor personal business info"
+        },
+        "task": {
+            "id": 1,
+            "creation_date": "2018-07-17T16:58:46",
+            "name": "Test Task",
+            "description": "",
+            "start_date": "2018-06-01T17:14:07",
+            "end_date": "2018-06-10T17:14:07",
+            "status": null,
+            "priority": false,
+            "assigner": {
+                "info": "assigner personal business info"
+            },
+            "project": {
+                "id": 2,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "assignee": {
+                "info": "assignee personal business info"
+            },
+            "group": {
+                "id": 3,
+                "creation_date": "2018-07-17T20:02:23",
+                "name": "Department 1",
+                "description": "",
+                 "project": {
+                    "id": 3,
+                    "creation_date": "2018-07-14T13:30:12",
+                    "name": "Project 2",
+                    "description": "",
+                    "start_date": "2018-07-01T17:14:07",
+                    "end_date": "2020-07-01T17:14:07",
+                    "creator": {
+                        "info": "creator personal business info"
+                    },
+                    "status": null
+                },
+                "status": "ACTIVE"
+            }
+        }
+    }
+}
+```
+
+## Delete Comment(s)
+
+Attribute  | Default | Description
+---------- | ------- | -----------
+task_id    | None    | Id of the task
+comment_id | None    | Id of the comment to delete
+
+This API can used to delete one comment, and all comments for a given task by `task_id`.
+If `comment_id` is provided then that specific comment will be deleted, else all comments will be deleted.
+`comment_id` should be provided as params.
+
+> Request
+>
+> DELETE task/[task_id]/comment?comment_id=[comment_id]
+
+```json
+
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Comment(s) deleted"
+}
+```
+
+# Task Checklist
+
 ## Add Checklist
 
-Parameter | Default | Description
---------- | ------- | -----------
-user_id | None | Id of the user who is sending the request.
-check_list | None | Array of strings or integers.
+Attribute  | Default | Description
+---------- | ------- | -----------
+task_id    | None    | Id of the task
+check_list | None    | Array of strings or integers.
 
 
 > Request
 >
-> GET task/[task_id]/check_list
+> POST task/[task_id]/check_list
 
 ```json
 {
-	"user_id": 34,
 	"check_list": ["a", "b"]
 }
 ```
@@ -1409,6 +1600,332 @@ check_list | None | Array of strings or integers.
 {
     "status_code": 201,
     "status_text": "Created",
-    "message": "Check list created"
+    "message": "Check list created",
+    "data": {
+        "id": 1,
+        "creation_date": "2018-07-17T16:58:46",
+        "name": "Test Task",
+        "description": "",
+        "start_date": "2018-06-01T17:14:07",
+        "end_date": "2018-06-10T17:14:07",
+        "status": null,
+        "read": false,
+        "priority": false,
+        "assigner": {
+            "info": "assigner personal business info"
+        },
+        "project": {
+            "id": 2,
+            "creation_date": "2018-07-14T13:30:12",
+            "name": "Project 2",
+            "description": "",
+            "start_date": "2018-07-01T17:14:07",
+            "end_date": "2020-07-01T17:14:07",
+            "creator": {
+               "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "assignee": {
+            "info": "assignee personal business info"
+        },
+        "group": {
+            "id": 3,
+            "creation_date": "2018-07-17T20:02:23",
+            "name": "Department 1",
+            "description": "",
+             "project": {
+                "id": 3,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "status": "ACTIVE"
+        },
+        "check_list": [
+            {
+                "id": 23,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 24,
+                "item": "b",
+                "checked": false
+            }
+        ]
+    }
+}
+```
+
+## Get Checklist
+
+Attribute  | Default | Description
+---------- | ------- | -----------
+task_id    | None    | Id of the task
+
+
+> Request
+>
+> GET task/[task_id]/check_list
+
+```json
+
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Check list fetched",
+    "data": {
+        "id": 3,
+        "creation_date": "2018-07-17T20:03:17",
+        "name": "Test task 3",
+        "description": "",
+        "start_date": "2018-07-02T17:14:07",
+        "end_date": "2019-06-01T17:14:07",
+        "status": null,
+        "priority": false,
+        "assigner": {
+            "info": "assigner personal business info"
+        },
+        "project": {
+            "id": 3,
+            "creation_date": "2018-07-14T14:31:50",
+            "name": "Project 3",
+            "description": "",
+            "start_date": "2018-05-10T17:14:07",
+            "end_date": "2021-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "assignee": {
+            "info": "assignee personal business info"
+        },
+        "group": {
+            "id": 3,
+            "creation_date": "2018-07-17T20:02:23",
+            "name": "Department 1",
+            "description": "",
+             "project": {
+                "id": 3,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "status": "ACTIVE"
+        },
+        "check_list": [
+            {
+                "id": 1,
+                "item": "a",
+                "checked": true
+            },
+            {
+                "id": 2,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 3,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 4,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 5,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 6,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 7,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 8,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 9,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 10,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 11,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 12,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 13,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 14,
+                "item": "b",
+                "checked": false
+            },
+            {
+                "id": 15,
+                "item": "a",
+                "checked": false
+            },
+            {
+                "id": 16,
+                "item": "b",
+                "checked": false
+            }
+        ]
+    }
+}
+```
+
+## Update Checklist
+
+Attribute  | Default | Description
+---------- | ------- | -----------
+task_id    | None    | Id of the task
+check_list | None    | Array of objects
+
+This API can be used to update the checklist item by item, also to mark item as checked(in case of done).
+
+> Request
+>
+> PUT task/[task_id]/check_list
+
+```json
+{
+    "check_list": [{"id": 21, "check_item": "a", "checked": true}]
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Check list Updated",
+    "data": {
+        "id": 3,
+        "creation_date": "2018-07-17T20:03:17",
+        "name": "Test task 3",
+        "description": "",
+        "start_date": "2018-07-02T17:14:07",
+        "end_date": "2019-06-01T17:14:07",
+        "status": null,
+        "priority": false,
+        "assigner": {
+            "info": "assigner personal business info"
+        },
+        "project": {
+            "id": 3,
+            "creation_date": "2018-07-14T14:31:50",
+            "name": "Project 3",
+            "description": "",
+            "start_date": "2018-05-10T17:14:07",
+            "end_date": "2021-07-01T17:14:07",
+            "creator": {
+                "info": "creator personal business info"
+            },
+            "status": null
+        },
+        "assignee": {
+            "info": "assignee personal business info"
+        },
+        "group": {
+            "id": 3,
+            "creation_date": "2018-07-17T20:02:23",
+            "name": "Department 1",
+            "description": "",
+             "project": {
+                "id": 3,
+                "creation_date": "2018-07-14T13:30:12",
+                "name": "Project 2",
+                "description": "",
+                "start_date": "2018-07-01T17:14:07",
+                "end_date": "2020-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "status": "ACTIVE"
+        },
+        "check_list": [
+            {
+                "id": 1,
+                "item": "a",
+                "checked": true
+            }
+        ]
+    }
+}
+```
+
+## Delete Checklist
+
+Attribute   | Default | Description
+----------- | ------- | -----------
+task_id     | None    | Id of the task
+checkListId | Null    | Id of the checklist item
+
+This API can used to delete one checklist item, and all checklist items for a given task by `task_id`.
+If `checkListId` is provided then that specific item of checklist will be deleted, else all items in checklist will be deleted.
+`checkListId` should be provided as params.
+
+> Request
+>
+> DELETE task/[task_id]/check_list?checkListId=[checkListId]
+
+```json
+
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Check list item(s) Deleted"
 }
 ```

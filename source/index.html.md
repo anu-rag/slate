@@ -13,6 +13,7 @@ includes:
   - project
   - group
   - task
+  - notification
   - errors
 
 search: true
