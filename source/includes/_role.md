@@ -137,6 +137,14 @@ role_id | None | An unique integer identifier for a role.
 
 This API can be used to fetch all 'ACTIVE' roles defined with the permissions for the corresponding roles.
 
+Attribute | Default  | Description
+--------- | -------- | -----------
+fromId    | 1        | Start range
+toId      | 20       | End range
+
+Attributes must be provided as params.
+Range between `fromId` and `toId` cannot be greater than 20.
+
 
 > Request
 >

@@ -289,7 +289,16 @@ emp_user_id | None | Id of the user whose details need to be deleted.
 }
 ```
 
-## Fetch All Users
+## Get All Users
+
+Attribute | Default  | Description
+--------- | -------- | -----------
+fromId    | 1        | Start range
+toId      | 20       | End range
+
+Attributes must be provided as params.
+Range between `fromId` and `toId` cannot be greater than 20.
+
 
 > Request
 >

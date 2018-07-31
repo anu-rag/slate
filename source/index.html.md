@@ -5,7 +5,7 @@ title: Taskplus API Reference
 
 toc_footers:
   - <a href='https://travis-ci.com'>Taskplus API document</a>
-  - <p>copywrite 2018 Node Technologies</p>
+  - <p>copyright 2018 Node Technologies</p>
 
 includes:
   - role
