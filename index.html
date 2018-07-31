@@ -292,7 +292,7 @@
                     <a href="#delete-user" class="toc-h2 toc-link" data-title="delete-user">Delete User</a>
                   </li>
                   <li>
-                    <a href="#fetch-all-users" class="toc-h2 toc-link" data-title="fetch-all-users">Fetch All Users</a>
+                    <a href="#get-all-users" class="toc-h2 toc-link" data-title="get-all-users">Get All Users</a>
                   </li>
                   <li>
                     <a href="#add-role" class="toc-h2 toc-link" data-title="add-role">Add Role</a>
@@ -491,7 +491,7 @@
       </div>
         <ul class="toc-footer">
             <li><a href='https://travis-ci.com'>Taskplus API document</a></li>
-            <li><p>copywrite 2018 Node Technologies</p></li>
+            <li><p>copyright 2018 Node Technologies</p></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -924,6 +924,28 @@ If the <code>role_id</code> is that of a root node(No roles above this role) the
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='get-all-roles'>Get All Roles</h2>
 <p>This API can be used to fetch all &#39;ACTIVE&#39; roles defined with the permissions for the corresponding roles.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromId</td>
+<td>1</td>
+<td>Start range</td>
+</tr>
+<tr>
+<td>toId</td>
+<td>20</td>
+<td>End range</td>
+</tr>
+</tbody></table>
+
+<p>Attributes must be provided as params.
+Range between <code>fromId</code> and <code>toId</code> cannot be greater than 20.</p>
 
 <blockquote>
 <p>Request</p>
@@ -1976,7 +1998,29 @@ If only the updated value is provided without initial then <code>interests</code
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='fetch-all-users'>Fetch All Users</h2>
+</span></code></pre><h2 id='get-all-users'>Get All Users</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fromId</td>
+<td>1</td>
+<td>Start range</td>
+</tr>
+<tr>
+<td>toId</td>
+<td>20</td>
+<td>End range</td>
+</tr>
+</tbody></table>
+
+<p>Attributes must be provided as params.
+Range between <code>fromId</code> and <code>toId</code> cannot be greater than 20.</p>
+
 <blockquote>
 <p>Request</p>
 
