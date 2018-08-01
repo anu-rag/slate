@@ -479,6 +479,8 @@ Note: Range between <code>fromId</code> and <code>toId</code> cannot be greater 
 User with `View all projects` permission(admin) can see all projects in the organisation else
 others will see only projects they are involved in.
 
+By default all projects will be fetched.
+
 > Request
 >
 > GET project/all/
