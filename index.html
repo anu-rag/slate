@@ -348,13 +348,13 @@
                     <a href="#get-all-projects" class="toc-h2 toc-link" data-title="get-all-projects">Get All Projects</a>
                   </li>
                   <li>
-                    <a href="#mark-project-s-as-complete" class="toc-h2 toc-link" data-title="mark-project-s-as-complete">Mark project(s) as complete</a>
+                    <a href="#mark-projects-as-complete" class="toc-h2 toc-link" data-title="mark-projects-as-complete">Mark projects as complete</a>
                   </li>
                   <li>
-                    <a href="#mark-project-s-as-favourite" class="toc-h2 toc-link" data-title="mark-project-s-as-favourite">Mark project(s) as favourite</a>
+                    <a href="#mark-projects-as-favourite" class="toc-h2 toc-link" data-title="mark-projects-as-favourite">Mark projects as favourite</a>
                   </li>
                   <li>
-                    <a href="#mark-project-s-as-unfavourite" class="toc-h2 toc-link" data-title="mark-project-s-as-unfavourite">Mark project(s) as unfavourite</a>
+                    <a href="#mark-projects-as-unfavourite" class="toc-h2 toc-link" data-title="mark-projects-as-unfavourite">Mark projects as unfavourite</a>
                   </li>
                   <li>
                     <a href="#project-activity" class="toc-h2 toc-link" data-title="project-activity">Project Activity</a>
@@ -418,22 +418,25 @@
                     <a href="#remove-followers-from-a-task" class="toc-h2 toc-link" data-title="remove-followers-from-a-task">Remove Followers from a task</a>
                   </li>
                   <li>
-                    <a href="#mark-task-s-as-favourite" class="toc-h2 toc-link" data-title="mark-task-s-as-favourite">Mark task(s) as favourite</a>
+                    <a href="#mark-tasks-as-favourite" class="toc-h2 toc-link" data-title="mark-tasks-as-favourite">Mark tasks as favourite</a>
                   </li>
                   <li>
-                    <a href="#remove-task-s-from-favourites" class="toc-h2 toc-link" data-title="remove-task-s-from-favourites">Remove task(s) from favourites</a>
+                    <a href="#remove-tasks-from-favourites" class="toc-h2 toc-link" data-title="remove-tasks-from-favourites">Remove tasks from favourites</a>
                   </li>
                   <li>
-                    <a href="#mark-task-s-as-read" class="toc-h2 toc-link" data-title="mark-task-s-as-read">Mark task(s) as read</a>
+                    <a href="#mark-tasks-as-read" class="toc-h2 toc-link" data-title="mark-tasks-as-read">Mark tasks as read</a>
                   </li>
                   <li>
-                    <a href="#deprioritize-task-s" class="toc-h2 toc-link" data-title="deprioritize-task-s">Deprioritize Task(s)</a>
+                    <a href="#deprioritize-tasks" class="toc-h2 toc-link" data-title="deprioritize-tasks">Deprioritize Tasks</a>
                   </li>
                   <li>
-                    <a href="#mark-task-as-complete" class="toc-h2 toc-link" data-title="mark-task-as-complete">Mark task as complete</a>
+                    <a href="#mark-tasks-as-complete" class="toc-h2 toc-link" data-title="mark-tasks-as-complete">Mark tasks as complete</a>
                   </li>
                   <li>
-                    <a href="#mark-task-as-closed" class="toc-h2 toc-link" data-title="mark-task-as-closed">Mark task as closed</a>
+                    <a href="#reopen-tasks" class="toc-h2 toc-link" data-title="reopen-tasks">Reopen Tasks</a>
+                  </li>
+                  <li>
+                    <a href="#close-tasks" class="toc-h2 toc-link" data-title="close-tasks">Close Tasks</a>
                   </li>
               </ul>
           </li>
@@ -2269,7 +2272,7 @@ Range between <code>fromId</code> and <code>toId</code> cannot be greater than 2
 <tr>
 <td>users</td>
 <td>None</td>
-<td>List of user Ids</td>
+<td>List of user Ids. Maximum length 20.</td>
 </tr>
 </tbody></table>
 
@@ -2301,7 +2304,7 @@ Range between <code>fromId</code> and <code>toId</code> cannot be greater than 2
 <tr>
 <td>users</td>
 <td>None</td>
-<td>List of user Ids</td>
+<td>List of user Ids. Maximum length 20.</td>
 </tr>
 </tbody></table>
 
@@ -3247,6 +3250,8 @@ Note: Range between <code>fromId</code> and <code>toId</code> cannot be greater 
 <p>User with <code>View all projects</code> permission(admin) can see all projects in the organisation else
 others will see only projects they are involved in.</p>
 
+<p>By default all projects will be fetched.</p>
+
 <blockquote>
 <p>Request</p>
 
@@ -3305,7 +3310,7 @@ others will see only projects they are involved in.</p>
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-project-s-as-complete'>Mark project(s) as complete</h2>
+</span></code></pre><h2 id='mark-projects-as-complete'>Mark projects as complete</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3337,7 +3342,7 @@ others will see only projects they are involved in.</p>
     </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Projects complete !"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-project-s-as-favourite'>Mark project(s) as favourite</h2>
+</span></code></pre><h2 id='mark-projects-as-favourite'>Mark projects as favourite</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -3400,7 +3405,7 @@ others will see only projects they are involved in.</p>
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-project-s-as-unfavourite'>Mark project(s) as unfavourite</h2>
+</span></code></pre><h2 id='mark-projects-as-unfavourite'>Mark projects as unfavourite</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -4003,18 +4008,6 @@ By default the <code>assigner</code> of the project will be set as the user who 
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-16T18:16:13"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procurement Department"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4082,18 +4075,6 @@ By default the <code>assigner</code> of the project will be set as the user who 
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -4227,18 +4208,6 @@ Only send the parameter which needs to be updated. For example, to update the ta
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-16T18:16:13"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procurement Department"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4304,18 +4273,6 @@ Only send the parameter which needs to be updated. For example, to update the ta
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -4926,7 +4883,7 @@ Note: Only users who have permission to follow tasks will be added as follower f
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-task-s-as-favourite'>Mark task(s) as favourite</h2>
+</span></code></pre><h2 id='mark-tasks-as-favourite'>Mark tasks as favourite</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5016,29 +4973,17 @@ Note: Only users who have permission to follow tasks will be added as follower f
                     </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assignee personal business info"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-16T18:16:13"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Procurement Department"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                            </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                        </span><span class="p">},</span><span class="w">
-                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='remove-task-s-from-favourites'>Remove task(s) from favourites</h2>
+</span></code></pre><h2 id='remove-tasks-from-favourites'>Remove tasks from favourites</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5070,7 +5015,7 @@ Note: Only users who have permission to follow tasks will be added as follower f
     </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Favourites removed !"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-task-s-as-read'>Mark task(s) as read</h2>
+</span></code></pre><h2 id='mark-tasks-as-read'>Mark tasks as read</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5106,7 +5051,7 @@ Note: Only an assignee can mark task as read. This is stored at a task level.
     </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task marked as read !"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='deprioritize-task-s'>Deprioritize Task(s)</h2>
+</span></code></pre><h2 id='deprioritize-tasks'>Deprioritize Tasks</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5138,7 +5083,7 @@ Note: Only an assignee can mark task as read. This is stored at a task level.
     </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task(s) deprioritized !"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-task-as-complete'>Mark task as complete</h2>
+</span></code></pre><h2 id='mark-tasks-as-complete'>Mark tasks as complete</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5206,24 +5151,86 @@ Note: Only an assignee can mark task as complete.
                 </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='mark-task-as-closed'>Mark task as closed</h2>
+</span></code></pre><h2 id='reopen-tasks'>Reopen Tasks</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tasks</td>
+<td>None</td>
+<td>Array of integers(task_ids). Maximum length 20.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Note: Only an assigner can reopen a task. Only <em>completed</em> tasks can be reopened.
+</aside>
+
+<blockquote>
+<p>Request</p>
+
+<p>PUT task/action/reopen</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"tasks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task(s) reopened !"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:25:12"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Task"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-05T17:14:07"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-06-01T17:14:07"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REOPEN"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"read"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"assigner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigner personal business info"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T14:31:50"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 3"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T17:14:07"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-07-01T17:14:07"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assignee personal business info"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='close-tasks'>Close Tasks</h2>
 <table><thead>
 <tr>
 <th>Attribute</th>
@@ -5291,18 +5298,6 @@ Note: Only assigners can mark task as closed.
                 </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                 </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-                </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -5488,18 +5483,6 @@ Note: Only assigners can mark task as closed.
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-             </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5808,18 +5791,6 @@ If <code>comment_id</code> is provided then that specific comment will be delete
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-             </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"check_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -5976,18 +5947,6 @@ If <code>comment_id</code> is provided then that specific comment will be delete
             </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17T20:02:23"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Department 1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-             </span><span class="s2">"project"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creation_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-14T13:30:12"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Project 2"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01T17:14:07"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"creator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">"creator personal business info"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"check_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
