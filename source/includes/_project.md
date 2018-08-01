@@ -540,7 +540,7 @@ others will see only projects they are involved in.
 }
 ```
 
-## Mark project(s) as complete
+## Mark projects as complete
 
 Attribute | Default | Description
 --------- | ------- | -----------
@@ -567,7 +567,7 @@ projects  | None    | Array of integers(project_ids). Maximum length 20.
 }
 ```
 
-## Mark project(s) as favourite
+## Mark projects as favourite
 
 Attribute | Default | Description
 --------- | ------- | -----------
@@ -625,7 +625,7 @@ projects  | None    | Array of integers(project_ids). Maximum length 20.
 }
 ```
 
-## Mark project(s) as unfavourite
+## Mark projects as unfavourite
 
 Attribute | Default | Description
 --------- | ------- | -----------

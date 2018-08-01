@@ -77,18 +77,6 @@ By default the <code>assigner</code> of the project will be set as the user who 
             "creation_date": "2018-07-16T18:16:13",
             "name": "Procurement Department",
             "description": "",
-            "project": {
-                "id": 2,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         }
     }
@@ -151,18 +139,6 @@ Only open tasks can be fetched by this API.
             "creation_date": "2018-07-17T20:02:23",
             "name": "Department 1",
             "description": "",
-            "project": {
-                "id": 2,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         },
         "followers": [
@@ -266,18 +242,6 @@ Only send the parameter which needs to be updated. For example, to update the ta
             "creation_date": "2018-07-16T18:16:13",
             "name": "Procurement Department",
             "description": "",
-            "project": {
-                "id": 2,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         }
     }
@@ -337,18 +301,6 @@ task_id   | None    | Id of task
             "creation_date": "2018-07-17T20:02:23",
             "name": "Department 1",
             "description": "",
-            "project": {
-                "id": 3,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         }
     }
@@ -917,7 +869,7 @@ followers | None     | Array of integers(user_ids). Maximum length 20.
 }
 ```
 
-## Mark task(s) as favourite
+## Mark tasks as favourite
 
 Attribute | Default  | Description
 --------- | -------- | -----------
@@ -1000,23 +952,11 @@ tasks     | None     | Array of integers(task_ids). Maximum length 20.
                     "info": "assignee personal business info"
                 },
                 "group": {
-                    "id": 1,
-                    "creation_date": "2018-07-16T18:16:13",
-                    "name": "Procurement Department",
+                    "id": 3,
+                    "creation_date": "2018-07-17T20:02:23",
+                    "name": "Department 1",
                     "description": "",
-                    "project": {
-                        "id": 3,
-                        "creation_date": "2018-07-14T13:30:12",
-                        "name": "Project 2",
-                        "description": "",
-                        "start_date": "2018-07-01T17:14:07",
-                        "end_date": "2020-07-01T17:14:07",
-                        "creator": {
-                            "info": "creator personal business info"
-                        },
-                        "status": null
-                    },
-                    "status": "ACTIVE"
+                    "status": null
                 }
             }
         ]
@@ -1024,7 +964,7 @@ tasks     | None     | Array of integers(task_ids). Maximum length 20.
 }
 ```
 
-## Remove task(s) from favourites
+## Remove tasks from favourites
 
 Attribute | Default  | Description
 --------- | -------- | -----------
@@ -1051,7 +991,7 @@ tasks     | None     | Array of integers(task_ids). Maximum length 20.
 }
 ```
 
-## Mark task(s) as read
+## Mark tasks as read
 
 Attribute | Default  | Description
 --------- | -------- | -----------
@@ -1082,7 +1022,7 @@ Note: Only an assignee can mark task as read. This is stored at a task level.
 }
 ```
 
-## Deprioritize Task(s)
+## Deprioritize Tasks
 
 Attribute | Default  | Description
 --------- | -------- | -----------
@@ -1109,7 +1049,7 @@ tasks     | None     | Array of integers(task_ids). Maximum length 20.
 }
 ```
 
-## Mark task as complete
+## Mark tasks as complete
 
 Attribute | Default  | Description
 --------- | -------- | -----------
@@ -1170,26 +1110,83 @@ Note: Only an assignee can mark task as complete.
                 "creation_date": "2018-07-17T20:02:23",
                 "name": "Department 1",
                 "description": "",
-                 "project": {
-                    "id": 3,
-                    "creation_date": "2018-07-14T13:30:12",
-                    "name": "Project 2",
-                    "description": "",
-                    "start_date": "2018-07-01T17:14:07",
-                    "end_date": "2020-07-01T17:14:07",
-                    "creator": {
-                        "info": "creator personal business info"
-                    },
-                    "status": null
-                },
-                "status": "ACTIVE"
+                "status": null
             }
         }
     ]
 }
 ```
 
-## Mark task as closed
+## Reopen Tasks
+
+Attribute | Default  | Description
+--------- | -------- | -----------
+tasks     | None     | Array of integers(task_ids). Maximum length 20.
+
+<aside class="notice">
+Note: Only an assigner can reopen a task. Only <em>completed</em> tasks can be reopened.
+</aside>
+
+
+> Request
+>
+> PUT task/action/reopen
+
+```json
+{
+    "tasks": [3]
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Task(s) reopened !",
+    "data": [
+        {
+            "id": 3,
+            "creation_date": "2018-07-17T20:25:12",
+            "name": "Test Task",
+            "description": "",
+            "start_date": "2018-07-05T17:14:07",
+            "end_date": "2019-06-01T17:14:07",
+            "status": "REOPEN",
+            "read": true,
+            "priority": false,
+            "assigner": {
+                "info": "assigner personal business info"
+            },
+            "project": {
+                "id": 3,
+                "creation_date": "2018-07-14T14:31:50",
+                "name": "Project 3",
+                "description": "",
+                "start_date": "2018-05-10T17:14:07",
+                "end_date": "2021-07-01T17:14:07",
+                "creator": {
+                    "info": "creator personal business info"
+                },
+                "status": null
+            },
+            "assignee": {
+                "info": "assignee personal business info"
+            },
+            "group": {
+                "id": 3,
+                "creation_date": "2018-07-17T20:02:23",
+                "name": "Department 1",
+                "description": "",
+                "status": null
+            }
+        }
+    ]
+}
+```
+
+## Close Tasks
 
 Attribute | Default  | Description
 --------- | -------- | -----------
@@ -1250,18 +1247,6 @@ Note: Only assigners can mark task as closed.
                 "creation_date": "2018-07-17T20:02:23",
                 "name": "Department 1",
                 "description": "",
-                 "project": {
-                    "id": 3,
-                    "creation_date": "2018-07-14T13:30:12",
-                    "name": "Project 2",
-                    "description": "",
-                    "start_date": "2018-07-01T17:14:07",
-                    "end_date": "2020-07-01T17:14:07",
-                    "creator": {
-                        "info": "creator personal business info"
-                    },
-                    "status": null
-                },
                 "status": "ACTIVE"
             }
         }
@@ -1434,18 +1419,6 @@ Get all comments for a task identified by `[task_id]`
             "creation_date": "2018-07-17T20:02:23",
             "name": "Department 1",
             "description": "",
-             "project": {
-                "id": 3,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         },
         "comments": [
@@ -1718,18 +1691,6 @@ task_id    | None    | Id of the task
             "creation_date": "2018-07-17T20:02:23",
             "name": "Department 1",
             "description": "",
-             "project": {
-                "id": 3,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         },
         "check_list": [
@@ -1876,18 +1837,6 @@ This API can be used to update the checklist item by item, also to mark item as 
             "creation_date": "2018-07-17T20:02:23",
             "name": "Department 1",
             "description": "",
-             "project": {
-                "id": 3,
-                "creation_date": "2018-07-14T13:30:12",
-                "name": "Project 2",
-                "description": "",
-                "start_date": "2018-07-01T17:14:07",
-                "end_date": "2020-07-01T17:14:07",
-                "creator": {
-                    "info": "creator personal business info"
-                },
-                "status": null
-            },
             "status": "ACTIVE"
         },
         "check_list": [
