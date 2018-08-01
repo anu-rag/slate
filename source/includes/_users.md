@@ -524,7 +524,7 @@ The `role_id` is an unique integer identifier for a role.
 
 Attribute | Default | Description
 --------- | ------- | -----------
-users | None | List of user Ids
+users | None | List of user Ids. Maximum length 20.
 
 > Request
 >
@@ -550,7 +550,7 @@ users | None | List of user Ids
 
 Attribute | Default | Description
 --------- | ------- | -----------
-users | None | List of user Ids
+users | None | List of user Ids. Maximum length 20.
 
 > Request
 >
