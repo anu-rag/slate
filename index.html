@@ -475,6 +475,17 @@
               </ul>
           </li>
           <li>
+            <a href="#task-attachment" class="toc-h1 toc-link" data-title="task-attachment">Task Attachment</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#upload-attachment" class="toc-h2 toc-link" data-title="upload-attachment">Upload Attachment</a>
+                  </li>
+                  <li>
+                    <a href="#delete-attachment" class="toc-h2 toc-link" data-title="delete-attachment">Delete Attachment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#notifications" class="toc-h1 toc-link" data-title="notifications">Notifications</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1448,7 +1459,16 @@ If <code>role</code> is provided then permissions for this <code>role</code> wil
 <td>None</td>
 <td>Array of integers(permission IDs).</td>
 </tr>
+<tr>
+<td>all</td>
+<td>False</td>
+<td>Assign all permissions.</td>
+</tr>
 </tbody></table>
+
+<aside class="notice">
+If <code>all</code> is <em>true</em>, then all permissions will be assigned irrespective of permissions set in <code>action_list</code>.
+</aside>
 
 <blockquote>
 <p>Request</p>
@@ -5996,6 +6016,136 @@ If <code>checkListId</code> is provided then that specific item of checklist wil
     </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Check list item(s) Deleted"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='task-attachment'>Task Attachment</h1><h2 id='upload-attachment'>Upload Attachment</h2>
+<aside class="warning">
+This API accepts only form-data.
+</aside>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>task_id</td>
+<td>None</td>
+<td>Id of the task</td>
+</tr>
+<tr>
+<td>doc</td>
+<td>None</td>
+<td>File(s) to be uploaded.</td>
+</tr>
+</tbody></table>
+
+<p>Supported File Formats:<br>
+PDF, JPEG, JPG, PNG, TIFF, DOC, DOCX, PPT, PPS, PPTX, XLS, ZIP, TXT, GIF</p>
+
+<aside class="notice">
+Multiple files can be uploaded using this API but the total size should not exceed 5 MB.
+</aside>
+
+<blockquote>
+<p>Request</p>
+
+<p>POST task/[task_id]/attachment</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"doc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"files"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Document uploaded"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/url/to/attachment"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"added_by"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"logged_in"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"personal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"your@email.address"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"last_name"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first_name last_name"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"mobile_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89XXXXXXX2"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"emergency_contact"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67XXXXXX61"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"permanent_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4th floor, Plot no. 49, Sector 44, Gurugram - 122002, Haryana"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"current_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4th floor, Plot no. 49, Sector 44, Gurugram - 122002, Haryana"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="s2">"music, art"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gurugram"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"business"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"work@email.address"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"contact_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9XXXXXX31"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"loaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bangalore"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"employee_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique_id"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"designation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Director"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"department"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Business Development"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"blood_group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"O+ve"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"date_of_joining"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"linkedin_profile"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='delete-attachment'>Delete Attachment</h2>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>task_id</td>
+<td>None</td>
+<td>Id of the task</td>
+</tr>
+<tr>
+<td>docs_id</td>
+<td>Null</td>
+<td>Id of the document</td>
+</tr>
+</tbody></table>
+
+<p><code>docs_id</code> should be sent as query params.</p>
+
+<aside class="notice">
+This API can be used to delete all attachments for a task, and also only one attachment.<br>
+If <code>docs_id</code> is given then only that attachment will be deleted.
+</aside>
+
+<blockquote>
+<p>Request</p>
+
+<p>DELETE task/[task_id]/attachment</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status_text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success. OK."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Attachment(s) deleted"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='notifications'>Notifications</h1><h2 id='get-notification-count'>Get notification count</h2>
 <table><thead>
