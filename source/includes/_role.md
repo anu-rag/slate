@@ -529,6 +529,11 @@ Attribute | Default | Description
 --------- | ------- | -----------
 role | None | Id of the role.
 action_list | None | Array of integers(permission IDs).
+all | False | Assign all permissions.
+
+<aside class="notice">
+If <code>all</code> is <em>true</em>, then all permissions will be assigned irrespective of permissions set in <code>action_list</code>.
+</aside>
 
 > Request
 >

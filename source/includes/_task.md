@@ -1878,3 +1878,115 @@ If `checkListId` is provided then that specific item of checklist will be delete
     "message": "Check list item(s) Deleted"
 }
 ```
+
+# Task Attachment
+
+## Upload Attachment
+
+<aside class="warning">
+This API accepts only form-data.
+</aside>
+
+Attribute   | Default | Description
+----------- | ------- | -----------
+task_id     | None    | Id of the task
+doc         | None    | File(s) to be uploaded.
+
+Supported File Formats:<br>
+PDF, JPEG, JPG, PNG, TIFF, DOC, DOCX, PPT, PPS, PPTX, XLS, ZIP, TXT, GIF
+
+<aside class="notice">
+Multiple files can be uploaded using this API but the total size should not exceed 5 MB.
+</aside>
+
+> Request
+>
+> POST task/[task_id]/attachment
+
+```json
+{
+    "doc": "files"
+}
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Document uploaded",
+    "data": {
+        "data_list": [
+            {
+                "id": 1,
+                "url": "/url/to/attachment",
+                "added_by": {
+                    "id": 2,
+                    "logged_in": true,
+                    "username": "username",
+                    "status": "ACTIVE",
+                    "personal": {
+                        "email": "your@email.address",
+                        "first_name": "first_name",
+                        "last_name": "last_name",
+                        "full_name": "first_name last_name",
+                        "mobile_number": "89XXXXXXX2",
+                        "emergency_contact": "67XXXXXX61",
+                        "permanent_address": "4th floor, Plot no. 49, Sector 44, Gurugram - 122002, Haryana",
+                        "current_address": "4th floor, Plot no. 49, Sector 44, Gurugram - 122002, Haryana",
+                        "interests": "music, art",
+                        "linkedin_profile": null,
+                        "location": "Gurugram"
+                    },
+                    "business": {
+                        "company_name": null,
+                        "work_email": "work@email.address",
+                        "contact_number": "9XXXXXX31",
+                        "loaction": "Bangalore",
+                        "employee_id": "unique_id",
+                        "designation": "Director",
+                        "department": "Business Development",
+                        "blood_group": "O+ve",
+                        "date_of_joining": null,
+                        "availability": true,
+                        "linkedin_profile": null
+                    }
+                }
+            }
+        ]
+    }
+}
+```
+
+## Delete Attachment
+
+Attribute   | Default | Description
+----------- | ------- | -----------
+task_id     | None    | Id of the task
+docs_id     | Null    | Id of the document
+
+`docs_id` should be sent as query params.
+
+<aside class="notice">
+This API can be used to delete all attachments for a task, and also only one attachment.<br>
+If <code>docs_id</code> is given then only that attachment will be deleted.
+</aside>
+
+> Request
+>
+> DELETE task/[task_id]/attachment
+
+```json
+
+```
+
+> Response
+
+```json
+{
+    "status_code": 200,
+    "status_text": "Success. OK.",
+    "message": "Attachment(s) deleted"
+}
+```
