@@ -171,6 +171,43 @@ Only open tasks can be fetched by this API.
                     "linkedin_profile": "https://url/to/linkedin/profile/"
                 }
             }
+        ],
+        "attachments": [
+            {
+                "id": 1,
+                "url": "/url/to/attachment",
+                "added_by": {
+                    "id": 2,
+                    "logged_in": true,
+                    "username": "username",
+                    "status": "ACTIVE",
+                    "personal": {
+                        "email": "your@email.address",
+                        "first_name": "first_name",
+                        "last_name": "last_name",
+                        "full_name": "first_name last_name",
+                        "mobile_number": "89XXXXXXX2",
+                        "emergency_contact": "67XXXXXX61",
+                        "permanent_address": "4th floor, Plot no. 49, Sector 44, Gurugram - 122002, Haryana",
+                        "current_address": "4th floor, Plot no. 49, Sector 44, Gurugram - 122002, Haryana",
+                        "interests": "music, art",
+                        "linkedin_profile": null,
+                        "location": "Gurugram"
+                    },
+                    "business": {
+                        "company_name": null,
+                        "work_email": "work@email.address",
+                        "contact_number": "9XXXXXX31",
+                        "loaction": "Bangalore",
+                        "employee_id": "unique_id",
+                        "department": "Business Development",
+                        "blood_group": "O+ve",
+                        "date_of_joining": null,
+                        "availability": true,
+                        "linkedin_profile": null
+                    }
+                }
+            }
         ]
     }
 }
@@ -537,7 +574,10 @@ Note: Pinned task will always be on top of task list(sorted by newest start_date
                         "status": null
                     },
                     "status": "ACTIVE"
-                }
+                },
+                "pinned": false,
+                "followers": [],
+                "has_attachment": true
             },
             {
                 "id": 3,
@@ -584,7 +624,10 @@ Note: Pinned task will always be on top of task list(sorted by newest start_date
                         "status": null
                     },
                     "status": "ACTIVE"
-                }
+                },
+                "pinned": false,
+                "followers": [],
+                "has_attachment": true
             },
             {
                 "id": 4,
@@ -631,7 +674,10 @@ Note: Pinned task will always be on top of task list(sorted by newest start_date
                         "status": null
                     },
                     "status": "ACTIVE"
-                }
+                },
+                "pinned": false,
+                "followers": [],
+                "has_attachment": true
             },
             {
                 "id": 5,
@@ -678,7 +724,10 @@ Note: Pinned task will always be on top of task list(sorted by newest start_date
                         "status": null
                     },
                     "status": "ACTIVE"
-                }
+                },
+                "pinned": false,
+                "followers": [],
+                "has_attachment": true
             }
         ]
     }
